@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melody Songs (Telugu & Hindi)</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="utility.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%, #000000 100%); 
+            color: #fff; 
+            font-family: 'Poppins', sans-serif; 
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Permanent Outer Space Background */
+        .space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: spaceFloat 20s linear infinite;
+        }
+        
+        @keyframes spaceFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+        
+        /* Nebula Clouds */
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .nebula-1 {
+            top: 10%;
+            left: 20%;
+            width: 300px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(29, 185, 84, 0.2), transparent);
+            animation: nebulaFloat 15s ease-in-out infinite;
+        }
+        
+        .nebula-2 {
+            top: 60%;
+            right: 15%;
+            width: 250px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.2), transparent);
+            animation: nebulaFloat 18s ease-in-out infinite reverse;
+        }
+        
+        .nebula-3 {
+            bottom: 20%;
+            left: 10%;
+            width: 200px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255, 69, 0, 0.2), transparent);
+            animation: nebulaFloat 12s ease-in-out infinite;
+        }
+        
+        @keyframes nebulaFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.1); }
+        }
+        
+        /* Twinkling Stars Background */
+        .twinkling-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+        
+        .star.large {
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            box-shadow: 0 0 4px #fff;
+        }
+        
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            background: #ddd;
+        }
+        
+        .star.small {
+            width: 1px;
+            height: 1px;
+            background: #aaa;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+        
+        /* Outer Space Music Animation */
+        .music-symbols-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 2;
+            display: none;
+        }
+        
+        .music-symbol {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(29, 185, 84, 0.9);
+            opacity: 0;
+            transform: translateX(-100px) translateY(50vh);
+            transition: none;
+        }
+        
+        /* Shooting Star Phase - Different Directions */
+        .music-symbol.shooting-star-1 {
+            animation: shootingStar1 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-2 {
+            animation: shootingStar2 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-3 {
+            animation: shootingStar3 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-4 {
+            animation: shootingStar4 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-5 {
+            animation: shootingStar5 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-6 {
+            animation: shootingStar6 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-7 {
+            animation: shootingStar7 2.5s ease-out forwards !important;
+        }
+        .music-symbol.shooting-star-8 {
+            animation: shootingStar8 2.5s ease-out forwards !important;
+        }
+        
+        /* Shooting from different directions with force */
+        @keyframes shootingStar1 {
+            0% {
+                opacity: 0;
+                transform: translateX(-150px) translateY(20vh) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(25vh) rotate(45deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(40vh) rotate(90deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(50vh) rotate(135deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(55vh) rotate(180deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar2 {
+            0% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(80vh) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(75vh) rotate(-45deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(60vh) rotate(-90deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(50vh) rotate(-135deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-10vw) translateY(45vh) rotate(-180deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar3 {
+            0% {
+                opacity: 0;
+                transform: translateX(50vw) translateY(-100px) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(10vh) rotate(0deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(30vh) rotate(0deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(45vh) rotate(0deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(50vw) translateY(55vh) rotate(0deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar4 {
+            0% {
+                opacity: 0;
+                transform: translateX(50vw) translateY(110vh) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(90vh) rotate(0deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(70vh) rotate(0deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(55vh) rotate(0deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(50vw) translateY(45vh) rotate(0deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar5 {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px) translateY(-100px) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(10vh) rotate(45deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(40vh) rotate(90deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(50vh) rotate(135deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(55vh) rotate(180deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar6 {
+            0% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(-100px) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(10vh) rotate(-45deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(40vh) rotate(-90deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(50vh) rotate(-135deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-10vw) translateY(55vh) rotate(-180deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar7 {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px) translateY(110vh) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(90vh) rotate(45deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(60vh) rotate(90deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(50vh) rotate(135deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(45vh) rotate(180deg) scale(0.3);
+            }
+        }
+        
+        @keyframes shootingStar8 {
+            0% {
+                opacity: 0;
+                transform: translateX(110vw) translateY(110vh) rotate(0deg) scale(0.3);
+            }
+            10% {
+                opacity: 1;
+                transform: translateX(90vw) translateY(90vh) rotate(-45deg) scale(1.2);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(50vw) translateY(60vh) rotate(-90deg) scale(1.5);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(10vw) translateY(50vh) rotate(-135deg) scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-10vw) translateY(45vh) rotate(-180deg) scale(0.3);
+            }
+        }
+        
+        /* Planet Formation Phase */
+        .music-symbol.forming-planet {
+            animation: formPlanet 1.5s ease-in-out forwards !important;
+        }
+        
+        @keyframes formPlanet {
+            0% {
+                opacity: 1;
+                transform: translateX(var(--final-x)) translateY(var(--final-y)) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(calc(50vw - 50px)) translateY(calc(50vh - 50px)) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(calc(50vw - 50px)) translateY(calc(50vh - 50px)) scale(1);
+            }
+        }
+        
+        /* Planet Burst Phase */
+        .music-symbol.bursting {
+            animation: burstOut 2s ease-out forwards !important;
+        }
+        
+        @keyframes burstOut {
+            0% {
+                opacity: 1;
+                transform: translateX(calc(50vw - 50px)) translateY(calc(50vh - 50px)) scale(1);
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(calc(50vw - 50px + var(--burst-x))) translateY(calc(50vh - 50px + var(--burst-y))) scale(1.5);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(calc(50vw - 50px + var(--burst-x) * 3)) translateY(calc(50vh - 50px + var(--burst-y) * 3)) scale(0.1);
+            }
+        }
+        
+        /* Planet Display with Growth Animation */
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #1db954, #0d8a3a, #1db954);
+            box-shadow: 
+                0 0 20px rgba(29, 185, 84, 0.6),
+                0 0 40px rgba(29, 185, 84, 0.4),
+                0 0 60px rgba(29, 185, 84, 0.2);
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+            animation: planetGlow 2s ease-in-out infinite alternate;
+        }
+        
+        .planet.growing {
+            animation: planetGlow 1s ease-in-out infinite alternate, planetGrow 0.5s ease-in-out;
+        }
+        
+        @keyframes planetGlow {
+            0% {
+                box-shadow: 
+                    0 0 20px rgba(29, 185, 84, 0.6),
+                    0 0 40px rgba(29, 185, 84, 0.4),
+                    0 0 60px rgba(29, 185, 84, 0.2);
+            }
+            100% {
+                box-shadow: 
+                    0 0 30px rgba(29, 185, 84, 0.8),
+                    0 0 60px rgba(29, 185, 84, 0.6),
+                    0 0 90px rgba(29, 185, 84, 0.4);
+            }
+        }
+        
+        @keyframes planetGrow {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(var(--growth-scale, 1));
+            }
+        }
+        
+        /* Ensure content stays above the animation */
+        .melody-hero, .songs-section, .waveform-container {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .melody-hero { 
+            display: flex; 
+            align-items: center; 
+            gap: 32px; 
+            margin: 40px auto 32px auto; 
+            max-width: 900px; 
+            background: rgba(30,30,30,0.85); 
+            border-radius: 18px; 
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18); 
+            padding: 32px 40px; 
+            font-family: 'Poppins', sans-serif;
+            backdrop-filter: blur(10px);
+        }
+        .melody-hero img { 
+            width: 160px; 
+            height: 200px; 
+            border-radius: 16px; 
+            object-fit: cover; 
+            box-shadow: 0 4px 24px 0 rgba(29,185,84,0.15); 
+        }
+        .melody-hero .info { 
+            flex: 1; 
+        }
+        .melody-hero h1 { 
+            font-size: 2.5em; 
+            margin-bottom: 10px; 
+            color: #1db954; 
+            font-family: 'Poppins', sans-serif; 
+        }
+        .melody-hero p { 
+            font-size: 1.2em; 
+            color: #b3b3b3; 
+            font-family: 'Poppins', sans-serif; 
+        }
+        .songs-section { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            font-family: 'Poppins', sans-serif
+        }
+        .song-list { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 24px; 
+            margin-top: 24px; 
+            font-family: 'Poppins', sans-serif
+        }
+        .waveform-container {
+            width: 100%;
+            max-width: 700px;
+            margin: 40px auto 0 auto;
+            background: rgba(30,30,30,0.95);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px 0 rgba(29,185,84,0.10);
+            padding: 32px 24px 24px 24px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        .waveform-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1db954;
+            margin-bottom: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .waveform {
+            width: 100%;
+            height: 80px;
+            margin-bottom: 16px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .waveform-controls {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+        .waveform-controls button {
+            background: #1db954;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            color: #fff;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            font-family: 'Poppins', sans-serif;
+        }
+        .waveform-controls button:hover {
+            background: #1ed760;
+            transform: scale(1.08);
+            font-family: 'Poppins', sans-serif;
+        }
+        a {
+            font-family: 'Poppins', sans-serif;
+        }
+        #melodySongList { 
+            max-width: 100vw; 
+            margin: 0 auto; 
+            font-family: 'Poppins', sans-serif
+        }
+        #melodySongList ul { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 32px; 
+            padding: 0; 
+            margin: 0; 
+            font-family: 'Poppins', sans-serif
+        }
+        #melodySongList li.song-item { 
+            width: 100%; 
+            box-sizing: border-box; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            border: 2px solid rgb(95, 92, 92); 
+            border-radius: 8px; 
+            font-family: "Poppins", sans-serif; 
+            background: rgba(255,255,255,0.03); 
+            transition: all 0.2s ease; 
+            cursor: pointer; 
+            position: relative; 
+            margin: 4px 4px; 
+            padding: 6px 8px; 
+            font-size: 13px; 
+            font-family: 'Poppins', sans-serif;
+            backdrop-filter: blur(5px);
+        }
+        #melodySongList li.song-item:hover { 
+            background: rgba(30,185,84,0.08); 
+            border: 2px solid #1db954; 
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.15); 
+            font-family: 'Poppins', sans-serif
+            
+        }
+        #melodySongList li.song-item.active {
+            background: rgba(29, 185, 84, 0.15);
+            border: 2px solid #1db954;
+            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
+            font-family: 'Poppins', sans-serif
+        }
+        #melodySongList li.song-item .play-on-hover { 
+            opacity: 0; 
+            transition: opacity 0.2s ease; 
+            cursor: pointer; 
+            z-index: 2; 
+            position: relative;
+        }
+        #melodySongList li.song-item:hover .play-on-hover,
+        #melodySongList li.song-item.active .play-on-hover { 
+            opacity: 1; 
+        }
+        #melodySongList li.song-item .play-on-hover .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        #melodySongList li.song-item:hover .play-on-hover .play-button {
+            opacity: 1;
+        }
+        #melodySongList li.song-item .frequency-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 20px;
+            width: 20px;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        #melodySongList li.song-item .frequency-bars .bar {
+            width: 2px;
+            background: #1db954;
+            border-radius: 1px;
+            animation: frequency-animation 1.2s ease-in-out infinite;
+        }
+        #melodySongList li.song-item .frequency-bars .bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+        #melodySongList li.song-item .frequency-bars .bar:nth-child(2) { height: 12px; animation-delay: 0.2s; }
+        #melodySongList li.song-item .frequency-bars .bar:nth-child(3) { height: 16px; animation-delay: 0.4s; }
+        #melodySongList li.song-item .frequency-bars .bar:nth-child(4) { height: 10px; animation-delay: 0.6s; }
+        @keyframes frequency-animation {
+            0%, 100% { transform: scaleY(0.3); opacity: 0.7; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+        @media (max-width: 900px) { 
+            #melodySongList { 
+                width: 98vw !important; 
+            } 
+            #melodySongList ul { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 8px; 
+            } 
+        }
+        @media (max-width: 700px) { 
+            #melodySongList ul { 
+                grid-template-columns: 1fr; 
+                gap: 6px; 
+            } 
+        }
+        .melody-volume-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            justify-content: center;
+        }
+        .volume-slider-container {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 6px 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            display: flex;
+            align-items: center;
+            min-width: 100px;
+            max-width: 140px;
+        }
+        #melodyVolumeSlider {
+            width: 100%;
+            accent-color: #1db954;
+            background: transparent;
+            height: 4px;
+            border-radius: 2px;
+            outline: none;
+            margin: 0 0 0 0;
+            transition: background 0.3s;
+        }
+        #melodyVolumeSlider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #1db954;
+            box-shadow: 0 2px 8px 0 rgba(30,185,84,0.15);
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: background 0.3s;
+        }
+        #melodyVolumeSlider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #1db954;
+            border: 2px solid #fff;
+            cursor: pointer;
+        }
+        #melodyVolumeSlider:focus {
+            background: #1db95444;
+        }
+        #melodyVolumeSlider:hover::-webkit-slider-thumb {
+            background: #17a74a;
+        }
+        #melodyVolumeSlider:hover::-moz-range-thumb {
+            background: #17a74a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Permanent Outer Space Background -->
+    <div class="space-background"></div>
+    
+    <!-- Nebula Clouds -->
+    <div class="nebula nebula-1"></div>
+    <div class="nebula nebula-2"></div>
+    <div class="nebula nebula-3"></div>
+    
+    <!-- Twinkling Stars Background -->
+    <div class="twinkling-stars" id="twinklingStars">
+        <!-- Stars will be generated by JavaScript -->
+    </div>
+
+    <!-- Outer Space Music Animation Container -->
+    <div class="music-symbols-container" id="musicSymbolsContainer">
+        <!-- Music Symbols -->
+        <div class="music-symbol" data-index="0">♪</div>
+        <div class="music-symbol" data-index="1">♫</div>
+        <div class="music-symbol" data-index="2">♬</div>
+        <div class="music-symbol" data-index="3">♩</div>
+        <div class="music-symbol" data-index="4">♭</div>
+        <div class="music-symbol" data-index="5">♮</div>
+        <div class="music-symbol" data-index="6">♯</div>
+        <div class="music-symbol" data-index="7">♪</div>
+        <div class="music-symbol" data-index="8">♫</div>
+        <div class="music-symbol" data-index="9">♬</div>
+        <div class="music-symbol" data-index="10">♩</div>
+        <div class="music-symbol" data-index="11">♭</div>
+        <div class="music-symbol" data-index="12">♮</div>
+        <div class="music-symbol" data-index="13">♯</div>
+        <div class="music-symbol" data-index="14">♪</div>
+        <div class="music-symbol" data-index="15">♫</div>
+        <div class="music-symbol" data-index="16">♬</div>
+        <div class="music-symbol" data-index="17">♩</div>
+        <div class="music-symbol" data-index="18">♭</div>
+        <div class="music-symbol" data-index="19">♮</div>
+        
+        <!-- Planet -->
+        <div class="planet" id="planet"></div>
+    </div>
+
+    <a href="index.html" style="margin: 20px; display: inline-block; color: #1db954; font-weight: bold;">&larr; Back</a>
+    <div class="melody-hero">
+        <img src="images/download (5).jpeg" alt="Melody">
+        <div class="info">
+            <h1>Melody Songs</h1>
+            <p>Enjoy a curated collection of beautiful Telugu and Hindi melody songs. Tap a song to listen!</p>
+        </div>
+    </div>
+    <div class="songs-section">
+        <div class="song-list" id="melodySongList" style="width:950px;"></div>
+    </div>
+    <div class="waveform-container" id="waveformContainer">
+        <div class="waveform-title" id="waveformTitle"></div>
+        <div class="waveform" id="waveform"></div>
+        <div class="waveform-controls">
+            <button id="waveformPlayPause">▶</button>
+            <span id="waveformCurrent">00:00</span> / <span id="waveformDuration">00:00</span>
+        </div>
+        <div class="melody-volume-row">
+            <button id="melodyMuteBtn" class="volume-icon-btn" style="background: none; border: none; display: flex; align-items: center; justify-content: center;">
+                <svg id="melodyVolumeIcon" viewBox="0 0 24 24" width="28" height="28" fill="none" style="transition: all 0.2s;">
+                    <path d="M3 9v6h4l5 5V4L7 9H3z" fill="#1db954"/>
+                    <path d="M16.5 12c0-1.77-1-3.29-2.5-4.03v8.06A4.978 4.978 0 0016.5 12z" fill="#1db954"/>
+                    <path d="M19.5 12c0-3.04-1.64-5.64-4.5-6.32v2.06c1.77.77 3 2.53 3 4.26s-1.23 3.49-3 4.26v2.06c2.86-.68 4.5-3.28 4.5-6.32z" fill="#1db954"/>
+                </svg>
+            </button>
+            <div class="volume-slider-container">
+                <input type="range" id="melodyVolumeSlider" min="0" max="1" step="0.01" value="1">
+            </div>
+        </div>
+    </div>
+    <script src="melody.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</body>
+</html>  

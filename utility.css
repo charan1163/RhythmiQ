@@ -1,0 +1,29 @@
+.justify-content{
+    justify-content: center;
+}
+.item-center{
+    align-items: center;
+}
+/* Scrollbar width */
+::-webkit-scrollbar {
+    width: 10px; /* Vertical scrollbar */
+    height: 10px; /* Horizontal scrollbar */
+  }
+  
+  /* Scrollbar track (background) */
+  ::-webkit-scrollbar-track {
+    background: #2e2e2e; /* Darker grey for track */
+    border-radius: 5px;
+  }
+  
+  /* Scrollbar thumb (draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: #555; /* Dark grey */
+    border-radius: 5px;
+  }
+  
+  /* On hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Slightly lighter grey */
+  }
+/* From Uiverse.io by JulanDeAlb */ 

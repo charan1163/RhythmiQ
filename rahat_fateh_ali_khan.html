@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahat Fateh Ali Khan Songs</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="utility.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { background: linear-gradient(135deg, #181818 0%, #282828 100%); color: #fff; font-family: 'Poppins'; }
+        .rahat-hero { display: flex; align-items: center; gap: 32px; margin: 40px auto 32px auto; max-width: 900px; background: rgba(30,30,30,0.85); border-radius: 18px; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18); padding: 32px 40px; }
+        .rahat-hero img { width: 160px; height: 200px; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 24px 0 rgba(29,185,84,0.15); }
+        .rahat-hero .info { flex: 1; }
+        .rahat-hero h1 { font-size: 2.5em; margin-bottom: 10px; color: #1db954; font-family: 'Poppins'; }
+        .rahat-hero p { font-size: 1.2em; color: #b3b3b3; }
+        .songs-section { max-width: 900px; margin: 0 auto; }
+        .song-list { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 24px; }
+        .song-card { background: rgba(40,40,40,0.95); border-radius: 14px; box-shadow: 0 2px 12px 0 rgba(29,185,84,0.08); padding: 24px 28px; min-width: 260px; flex: 1 1 260px; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; transition: background 0.2s, transform 0.2s; position: relative; font-family: 'Poppins'; }
+        .song-card:hover { background: #232323; transform: translateY(-4px) scale(1.03); }
+        .song-title { font-size: 1.2em; font-weight: 600; color: #fff; font-family: 'Poppins'; }
+        .song-artist { font-size: 1em; color: #1db954; margin-bottom: 8px; font-family: 'Poppins'; }
+        .waveform-container { width: 100%; max-width: 700px; margin: 40px auto 0 auto; background: rgba(30,30,30,0.95); border-radius: 16px; box-shadow: 0 2px 12px 0 rgba(29,185,84,0.10); padding: 32px 24px 24px 24px; display: none; flex-direction: column; align-items: center; }
+        .waveform-title { font-size: 1.3em; font-weight: 600; color: #1db954; margin-bottom: 12px; font-family: 'Poppins'; }
+        .waveform { width: 100%; height: 80px; margin-bottom: 16px; font-family: 'Poppins'; }
+        .waveform-controls { display: flex; gap: 18px; align-items: center; }
+        .waveform-controls button { background: #1db954; border: none; border-radius: 50%; width: 48px; height: 48px; color: #fff; font-size: 1.5em; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, transform 0.2s; font-family: 'Poppins'; }
+        .waveform-controls button:hover { background: #1ed760; transform: scale(1.08); font-family: 'Poppins'; }
+     a{ font-family: 'Poppins'; }
+        #rahatSongList { max-width: 100vw; margin: 0 auto; }
+        #rahatSongList ul { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding: 0; margin: 0; }
+        #rahatSongList li.song-item { width: 100%; box-sizing: border-box; display: flex; align-items: center; gap: 8px; border: 2px solid rgb(95, 92, 92); border-radius: 8px; font-family: "Poppins"; background: rgba(255,255,255,0.03); transition: all 0.2s ease; cursor: pointer; position: relative; margin: 4px 4px; padding: 6px 8px; font-size: 13px; }
+        #rahatSongList li.song-item:hover { background: rgba(30,185,84,0.08); border: 2px solid #1db954; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(29, 185, 84, 0.15); }
+        #rahatSongList li.song-item.active { background: rgba(29, 185, 84, 0.15); border: 2px solid #1db954; box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2); }
+        #rahatSongList li.song-item .play-on-hover { opacity: 0; transition: opacity 0.2s ease; cursor: pointer; z-index: 2; }
+        #rahatSongList li.song-item:hover .play-on-hover, #rahatSongList li.song-item.active .play-on-hover { opacity: 1; }
+        #rahatSongList li.song-item .frequency-bars { display: flex; align-items: flex-end; gap: 2px; height: 20px; width: 20px; justify-content: center; }
+        #rahatSongList li.song-item .frequency-bars .bar { width: 2px; background: #1db954; border-radius: 1px; animation: frequency-animation 1.2s ease-in-out infinite; }
+        #rahatSongList li.song-item .frequency-bars .bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+        #rahatSongList li.song-item .frequency-bars .bar:nth-child(2) { height: 12px; animation-delay: 0.2s; }
+        #rahatSongList li.song-item .frequency-bars .bar:nth-child(3) { height: 16px; animation-delay: 0.4s; }
+        #rahatSongList li.song-item .frequency-bars .bar:nth-child(4) { height: 10px; animation-delay: 0.6s; }
+        @keyframes frequency-animation { 0%, 100% { transform: scaleY(0.3); opacity: 0.7; } 50% { transform: scaleY(1); opacity: 1; } }
+        @media (max-width: 900px) { #rahatSongList { width: 98vw !important; } #rahatSongList ul { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
+        @media (max-width: 700px) { #rahatSongList ul { grid-template-columns: 1fr; gap: 6px; } }
+        .rahat-volume-row { display: flex; align-items: center; gap: 10px; margin-top: 18px; justify-content: center; }
+        .volume-slider-container { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 6px 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.10); display: flex; align-items: center; min-width: 100px; max-width: 140px; }
+        #rahatVolumeSlider { width: 100%; accent-color: #1db954; background: transparent; height: 4px; border-radius: 2px; outline: none; margin: 0 0 0 0; transition: background 0.3s; }
+        #rahatVolumeSlider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #1db954; box-shadow: 0 2px 8px 0 rgba(30,185,84,0.15); cursor: pointer; border: 2px solid #fff; transition: background 0.3s; }
+        #rahatVolumeSlider::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #1db954; border: 2px solid #fff; cursor: pointer; }
+        #rahatVolumeSlider:focus { background: #1db95444; }
+        #rahatVolumeSlider:hover::-webkit-slider-thumb { background: #17a74a; }
+        #rahatVolumeSlider:hover::-moz-range-thumb { background: #17a74a; }
+    </style>
+</head>
+<body>
+    <a href="index.html" style="margin: 20px; display: inline-block; color: #1db954; font-weight: bold;">&larr; Back</a>
+    <div class="rahat-hero">
+        <img src="images/rahat_fateh_ali_khan.jpeg" alt="Rahat Fateh Ali Khan">
+        <div class="info">
+            <h1>Rahat Fateh Ali Khan</h1>
+            <p>Experience the best of Rahat Fateh Ali Khan's music. Tap a song to play and see the live waveform!</p>
+        </div>
+    </div>
+    <div class="songs-section">
+        <div class="song-list" id="rahatSongList" style="width:950px;"></div>
+    </div>
+    <div class="waveform-container" id="waveformContainer">
+        <div class="waveform-title" id="waveformTitle"></div>
+        <div class="waveform" id="waveform"></div>
+        <div class="waveform-controls">
+            <button id="waveformPlayPause">▶</button>
+            <span id="waveformCurrent">00:00</span> / <span id="waveformDuration">00:00</span>
+        </div>
+        <div class="rahat-volume-row">
+            <button id="rahatMuteBtn" class="volume-icon-btn" style="background: none; border: none; display: flex; align-items: center; justify-content: center;">
+                <svg id="rahatVolumeIcon" viewBox="0 0 24 24" width="28" height="28" fill="none" style="transition: all 0.2s;">
+                    <path d="M3 9v6h4l5 5V4L7 9H3z" fill="#1db954"/>
+                    <path d="M16.5 12c0-1.77-1-3.29-2.5-4.03v8.06A4.978 4.978 0 0016.5 12z" fill="#1db954"/>
+                    <path d="M19.5 12c0-3.04-1.64-5.64-4.5-6.32v2.06c1.77.77 3 2.53 3 4.26s-1.23 3.49-3 4.26v2.06c2.86-.68 4.5-3.28 4.5-6.32z" fill="#1db954"/>
+                </svg>
+            </button>
+            <div class="volume-slider-container">
+                <input type="range" id="rahatVolumeSlider" min="0" max="1" step="0.01" value="1">
+            </div>
+        </div>
+    </div>
+    <script src="rahat_fateh_ali_khan.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</body>
+</html> 
